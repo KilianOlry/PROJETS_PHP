@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+:root{
+    --color-primary : #17f;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--color-primary);
+}
+section{
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 10px;
+    width: 350px;
+    border-radius: 6px;
+}
+
+h1{
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    margin: 5px 0;
+    padding: 5px 5px;
+    outline: 0;
+    border: 1px solid black;
+    border-radius: 6px;
+
+}
+
+form input[type = 'submit'] {
+    background:  var(--color-primary);
+    border: 0;
+    color: #fff;
+    margin-top: 20px;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+
+/* bienvenu.php */
+
+header{
+    background: #fff;
+    padding: 10px;
+    width: 100vw;
+}
+
+.message{
+    text-align: center;
+    padding: 10px;
+}

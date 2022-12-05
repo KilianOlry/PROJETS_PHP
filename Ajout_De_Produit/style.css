@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,200;1,400&display=swap');
+
+:root{
+    --bg-color: #3A3335;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+section{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #3A3335;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: pan 6s infinite alternate linear;
+}
+
+@keyframes pan{
+    100%{
+        background-position: 15% 50%;
+    }
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #ffff;
+    border-radius: 5px;
+
+}
+
+.card form{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    gap: 10px;
+    
+}
+label{
+    font-weight: 900;
+}
+
+.btn-liste-prod{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#submit, .btn-liste-prod{
+    
+    background-color: #3A3335;
+    color: white;
+    padding: 2px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+/* Résultat html */
+
+.result{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+}
+
+.result_content{
+    background-color: #fff;
+    border: 6px;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+    width: 40%;
+}
+
+.result_content a{
+    color: #3A3335;
+}
+.result_content a:hover{
+    text-decoration: underline;
+}
+
+/* Scroll bar */
+
+::-webkit-scrollbar{
+    width: 8px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #ccc;
+}
+
+.result_content h3{
+    text-align: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.liste_produits{
+    max-height: 400px;
+    overflow: auto;
+}
+
+.produit{
+    margin: 20px 0;
+    height: 100px;
+    display: flex;
+}
+
+.produit .image_prod{
+    height: 100%;
+    width: 20%;
+}
+
+.produit .image_prod img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.produit .text{
+    margin-left: 15px;
+    overflow: hidden;
+    width: 80%;
+    
+}
+
+.produit .text .titre{
+    text-transform: uppercase;
+}
+.produit .text .description{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
+/* Responsive Résultat HTML */
+@media (width>= 745px){
+    
+.result_content{
+    width: 80%;
+
+}
+
+}
