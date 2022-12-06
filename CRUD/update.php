@@ -1,5 +1,11 @@
 <?php
     require_once('connect.php');
+    $id = $_GET['id'];
+    $selSql = "SELECT * FROM `etudiant` WHERE id=$id";
+    $res = mysqli_query($con, $selSql);
+    $r = mysqli_fetch_assoc($res);
+
+
         if (isset($_POST) & !empty($_POST)) {
             $nom = ($_POST['Nom']);
             $prenom = ($_POST['Prenom']);
@@ -7,15 +13,15 @@
             $gender = ($_POST['Gender']);
             $age = ($_POST['Age']);
 
-            $CreateSql = "INSERT INTO `etudiant` (first_name, last_name, email, gender, age)
-                            VALUES('$prenom', '$nom', '$email', '$gender', '$age')";
+            $UpdateSql = "UPDATE `etudiant` SET first_name='$nom', last_name='$prenom', email='$email', gender='$gender', age='$age'
+                            WHERE id=$id";
 
-            $res = mysqli_query($con, $CreateSql) or die(mysqli_error($con));
+            $res = mysqli_query($con, $UpdateSql);
 
             if ($res) {
-                $message = "insertion résussi";
+                header("location: view.php");
             }else{
-                $erreur = "erreur d'insertion dans la base";
+                $erreur = "les changements n'ont pas été comptabliser";
             }
                             
         }
@@ -39,15 +45,7 @@
 ?>
     <div class="container">
         <div class="row pt-4">
-            <?php
-                if (isset($message)) { ?>
-                <div class="alert alert-success" role="alert">
-                <?php
-                    echo $message;
-              ?>
-            </div> <?php } ?>
-
-
+           
             <?php
                 if (isset($erreur)) { ?>
                 <div class="alert alert-danger" role="alert">
@@ -65,20 +63,20 @@
                 <div class="form-group">
                     <label for="input1" class="col-sm-2 control-label">Prenom</label>
                     <div class="col-sm-10">
-                        <input type="text" name="Prenom" placeholder="Prenom" class="form-control" id="input1">
+                        <input type="text" name="Prenom" placeholder="Prenom" class="form-control" id="input1" value="<?php echo $r['first_name']?>">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="input2" class="col-sm-2 control-label">Nom</label>
                     <div class="col-sm-10">
-                        <input type="text" name="Nom" placeholder="Nom" class="form-control" id="input2">
+                        <input type="text" name="Nom" placeholder="Nom" class="form-control" id="input1" value="<?php echo $r['last_name']?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="input3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" name="Email" placeholder="Adresse Mail" class="form-control" id="input3">
+                        <input type="text" name="Email" placeholder="Adresse Mail" class="form-control" id="input1" value="<?php echo $r['email']?>">
                     </div>
                 </div>
 
@@ -87,13 +85,17 @@
                     <label for="input4" class="col-sm-2 control-label">Genre</label>
                     <div class="col-sm-10">
                         <label>
-                                <input type="radio" name="Gender" id="optionsRadios" value="H" checked> Homme
+                                <input type="radio" name="Gender" id="optionsRadios" value="H" <?php if ($r['gender'] == 'H') {
+                                    echo "checked";
+                                } ?> checked> Homme
                         </label>
 
                     </div>
                     <div class="col-sm-10">
                         <label>
-                                <input type="radio" name="Gender" id="optionsRadios" value="F" checked> Femme
+                                <input type="radio" name="Gender" id="optionsRadios" value="F"<?php if ($r['gender'] == 'F') {
+                                    echo "checked";
+                                } ?> checked> Femme
                         </label>
 
                     </div>
@@ -105,11 +107,20 @@
                     <div class="col-sm-10">
                         <select name="Age" id="" class="form-control">
                             <option>Ton age</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
+                            <option value="20" <?php if ($r['age'] == '20') {
+                                    echo "selected";} ?>>20</option>
+
+                            <option value="21" <?php if ($r['age'] == '21') {
+                                    echo "selected";} ?>>21</option>
+
+                            <option value="22" <?php if ($r['age'] == '22') {
+                                    echo "selected";} ?>>22</option>
+
+                            <option value="23" <?php if ($r['age'] == '23') {
+                                    echo "selected";} ?>>23</option>
+
+                            <option value="24" <?php if ($r['age'] == '24') {
+                                    echo "selected";} ?>>24</option>
                         </select>
                 </div>
             </div>
@@ -117,9 +128,6 @@
             <div class="pt-4">
                 <input type="submit" value="Ajouter" class="btn btn-primary m-3">
                 
-                <a href="view.php">
-                    <button class="btn btn-success m-3" type="button">Voir la liste</button>
-                    </a>
             </div>
             </form>
         </div>

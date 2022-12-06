@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
+
+<!-- Voici la navbar qu'on inclura dans chaque page de notre application -->
+
+
     <header>
         <h1>CRUD</h1>
 
@@ -15,7 +19,7 @@
             <a href="#">
                 <button class="Home">Home</button>
             </a>
-            <a href="#">
+            <a href="index.php">
                 <button class="Add">Ajouter un Étudiant</button>
             </a>
         </div>
