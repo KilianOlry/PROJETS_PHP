@@ -1,5 +1,11 @@
 <?php
+//on fait appel à notre connexion dans le fichier connect.php
+
+
     require_once('connect.php');
+
+    //on vérifie que tous les champs du formaulaire on étéait remplit
+
         if (isset($_POST) & !empty($_POST)) {
             $nom = ($_POST['Nom']);
             $prenom = ($_POST['Prenom']);
@@ -7,6 +13,8 @@
             $gender = ($_POST['Gender']);
             $age = ($_POST['Age']);
 
+            //Requête sql qui insert les données dans la base de donnée
+            
             $CreateSql = "INSERT INTO `etudiant` (first_name, last_name, email, gender, age)
                             VALUES('$prenom', '$nom', '$email', '$gender', '$age')";
 

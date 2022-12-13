@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>CRUD</title>
 </head>
 <body>
 
@@ -40,10 +40,10 @@
         </a>
     </div>
 
-<!-- Le tableau qui av contenir les informations des stagiaires -->
+<!-- Le tableau qui va contenir les informations des stagiaires -->
 
 
-    <table class="table table-stiped mt-3">
+    <table class="table table-stiped mt-5">
         <thead>
             <tr>
                 <th>identifiant</th>
@@ -57,7 +57,7 @@
 
         <tbody>
 
-<!-- Tant que il y des lignes conteant des informations sur les stagiaires tu ajoutes une nouvelle ligne dans le tableau -->
+<!-- Tant qu'il y des lignes contenant des informations sur les stagiaires tu ajoutes une nouvelle ligne dans le tableau -->
             <?php
                 while ($r = mysqli_fetch_assoc($res)) {
                     
@@ -110,6 +110,41 @@
 </div>
 
 
+
+<div class="container">
+    <div class="row text-center">
+        <form action="" method="GET" class="form-horizontal col-md-12 pt-5">
+                <h2>Rechercher un Étudiant</h2>
+            <div class="pt-4">
+            <input type="text" name="recherche" placeholder="Rechercher" class="form-control" id="ID-Recherche">
+                    <button class="btn btn-success mt-5" type="button">Rechercher</button>
+            </div>
+
+            <p class="mt-5">L'étudiant <?php echo $req6 ?> existe bien dans la base de donnée</p>
+        </form>    
+    
+</div>
+
+
+</div>
+
+<?php
+
+                  
+         if (isset($_GET) & !empty($_GET)) {
+            $rechercher = ($_POST['recherche']);
+            
+            (mysqli_fetch_assoc($ ));
+            //Requête sql qui insert les données dans la base de donnée
+            
+            $CreateSql2 = $req5 = "SELECT * FROM 'etudiant' WHERE firstname ='$recherche'";  
+
+            $req6 = mysqli_query($con, $CreateSql2);
+
+
+                            
+        }
+?>
 
 
 

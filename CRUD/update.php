@@ -2,9 +2,16 @@
     require_once('connect.php');
     $id = $_GET['id'];
     $selSql = "SELECT * FROM `etudiant` WHERE id=$id";
+
+    //mysqli_query fait une requête dans la base de donnée
+
     $res = mysqli_query($con, $selSql);
+
+    //Récupère la ligne suivante d'un ensemble de résultats sous forme de tableau associatif
+
     $r = mysqli_fetch_assoc($res);
 
+//Stock les valeurs des champs du formulaire dans les variables
 
         if (isset($_POST) & !empty($_POST)) {
             $nom = ($_POST['Nom']);
@@ -13,8 +20,12 @@
             $gender = ($_POST['Gender']);
             $age = ($_POST['Age']);
 
+//Requête SQL qui ajoute la valeur des variables dans les colones de la table
+
             $UpdateSql = "UPDATE `etudiant` SET first_name='$nom', last_name='$prenom', email='$email', gender='$gender', age='$age'
                             WHERE id=$id";
+
+//Nouvelle déclaration de variable qui stock la connexion et la requête ci dessus
 
             $res = mysqli_query($con, $UpdateSql);
 
